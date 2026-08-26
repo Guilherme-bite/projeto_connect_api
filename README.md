@@ -20,15 +20,14 @@ Fornecer uma base sólida e organizada de API REST, capaz de atender requisiçõ
 
 connect_api_guilherme_santos/
 ├── app/
-│ ├── init.py # Application factory (create_app) e registro de rotas
-│ ├── models/
-│ │ └── user.py # Estrutura de dados em memória e lógica de criação de usuários
-│ └── routes/
-│ └── users.py # Rotas HTTP (GET, POST, PUT, DELETE) de usuários
-├── run.py # Ponto de entrada da aplicação
-├── requirements.txt # Dependências do projeto
+│   ├── __init__.py       # Application factory (create_app) e registro de rotas
+│   ├── models/
+│   │   └── user.py       # Estrutura de dados em memória e lógica de criação de usuários
+│   └── routes/
+│       └── users.py      # Rotas HTTP (GET, POST, PUT, DELETE) de usuários
+├── run.py                # Ponto de entrada da aplicação
+├── requirements.txt      # Dependências do projeto
 └── .gitignore
-
 
 ## Como executar o projeto localmente
 
