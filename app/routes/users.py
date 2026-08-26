@@ -23,3 +23,28 @@ def buscar_usuario(usuario_id):
             return jsonify(usuario), 200
 
     return jsonify({'erro': 'Usuario nao encontrado'}), 404
+
+@users_bp.route('/usuarios/<int:usuario_id>', methods=['PUT'])
+def atualizar_usuario(usuario_id):
+    data = request.get_json()
+    nome = data.get('nome')
+    email = data.get('email')
+
+    for usuario in usuarios:
+        if usuario['id'] == usuario_id:
+            usuario['nome'] = data.get('nome', usuario['nome'])
+            usuario['email'] = data.get('email', usuario['email'])
+            return jsonify(usuario), 200
+
+    return jsonify({'erro': 'Usuario nao encontrado'}), 404
+
+
+@users_bp.route('/usuarios/<int:usuario_id>', methods=['DELETE'])
+def deletar_usuario(usuario_id):
+
+    for usuario in usuarios:
+        if usuario['id'] == usuario_id:
+            usuarios.remove(usuario)
+            return jsonify({'mensagem': 'Usuario removido com sucesso'}), 200
+            
+    return jsonify({'erro': 'Usuario nao encontrado'}), 404        
