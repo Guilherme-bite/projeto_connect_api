@@ -15,3 +15,11 @@ def cadastrar_usuario():
 
     novo_usuario = criar_usuario(nome, email)
     return jsonify(novo_usuario), 201
+
+@users_bp.route('/usuarios/<int:usuario_id>', methods=['GET'])
+def buscar_usuario(usuario_id):
+    for usuario in usuarios:
+        if usuario['id'] == usuario_id:
+            return jsonify(usuario), 200
+
+    return jsonify({'erro': 'Usuario nao encontrado'}), 404
