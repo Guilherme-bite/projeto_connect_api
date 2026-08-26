@@ -10,11 +10,14 @@ def listar_usuarios():
 @users_bp.route('/usuarios', methods=['POST'])
 def cadastrar_usuario():
     data = request.get_json()
+    if not data or not data.get('nome') or not data.get('email'):
+        return jsonify({'erro': 'Nome e email sao obrigatorios'}), 400
+
     nome = data.get('nome')
     email = data.get('email')
 
     novo_usuario = criar_usuario(nome, email)
-    return jsonify(novo_usuario), 201
+    return jsonify({'data': novo_usuario}), 201
 
 @users_bp.route('/usuarios/<int:usuario_id>', methods=['GET'])
 def buscar_usuario(usuario_id):
